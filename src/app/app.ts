@@ -1,4 +1,3 @@
-import { IProduct } from "./domain/entitys/product-interface";
 import { MenuMachine } from "./domain/interface/menu-machine-interface";
 
 export class Application {
@@ -8,19 +7,19 @@ export class Application {
     this.menu = menu;
   }
 
-  cargarProducto(product:IProduct) { 
-    this.menu.creacionProducto(product);  
+  verProductos(){
+    this.menu.verProductos();
   }
 
-  verProducto() {
-    this.menu.mostrarProducto();
+  seleccionarProducto(){
+    this.menu.seleccionarProducto();
   }
 
-  seleccionarProducto() {
-    this.menu.busquedaProducto();
+  ingresarBillete(){
+    this.menu.ingresarBillete();
   }
 
-  ingresarBillete() {
-    this.menu.compraProducto();
+  salir():string{
+    return this.menu.salir();
   }
 }

@@ -5,17 +5,17 @@ class Application {
     constructor(menu) {
         this.menu = menu;
     }
-    cargarProducto(product) {
-        this.menu.creacionProducto(product);
-    }
-    verProducto() {
-        this.menu.mostrarProducto();
+    verProductos() {
+        this.menu.verProductos();
     }
     seleccionarProducto() {
-        this.menu.busquedaProducto();
+        this.menu.seleccionarProducto();
     }
     ingresarBillete() {
-        this.menu.compraProducto();
+        this.menu.ingresarBillete();
+    }
+    salir() {
+        return this.menu.salir();
     }
 }
 exports.Application = Application;

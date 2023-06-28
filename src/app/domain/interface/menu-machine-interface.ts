@@ -1,8 +1,7 @@
-import { OperationsMachine } from "./operations-machine-interface";
 
-export interface MenuMachine extends OperationsMachine{
+export interface MenuMachine{
   verProductos(): void;
   seleccionarProducto(): void;
   ingresarBillete(): void;
-  //salir(): string;
+  salir(): string;
 }
