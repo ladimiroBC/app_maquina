@@ -14,7 +14,7 @@ export class OperationsMachineService implements OperationsMachine{
   cargarProducto(): void {
     this.products = data.productos;
     this.products.forEach((p,i)=>{
-      console.log(`${i+1}. ${p.name} precios--> ${p.price}`)
+      console.log(`${i+1}. ${p.name} precios--> ${p.price} stock--> ${p.amount}`)
     })    
   }
 

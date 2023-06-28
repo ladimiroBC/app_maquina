@@ -14,7 +14,7 @@ class OperationsMachineService {
     cargarProducto() {
         this.products = productos_json_1.default.productos;
         this.products.forEach((p, i) => {
-            console.log(`${i + 1}. ${p.name} precios--> ${p.price}`);
+            console.log(`${i + 1}. ${p.name} precios--> ${p.price} stock--> ${p.amount}`);
         });
     }
     ingresarNombreProducto() {
