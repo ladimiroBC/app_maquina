@@ -1,25 +1,25 @@
-import { MenuMachine } from "./domain/interface/menu-machine-interface";
+import { IMenuMachine } from "./domain/interface/menu-machine-interface";
 
 export class Application {
-  private menu:MenuMachine;
+  private menu: IMenuMachine;
 
-  constructor(menu:MenuMachine){
+  constructor(menu: IMenuMachine) {
     this.menu = menu;
   }
 
-  verProductos(){
+  verProductos() {
     this.menu.verProductos();
   }
 
-  seleccionarProducto(){
+  seleccionarProducto() {
     this.menu.seleccionarProducto();
   }
 
-  ingresarBillete(){
+  ingresarBillete() {
     this.menu.ingresarBillete();
   }
 
-  salir():string{
+  salir(): string {
     return this.menu.salir();
   }
 }

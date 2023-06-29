@@ -1,44 +1,49 @@
-import { IProduct } from "../../domain/entitys/product-interface";
-import { OperationsMachine } from "../../domain/interface/operations-machine-interface";
+import { IProduct } from "../entitys/product-interface";
+import { IOperationsMachine } from "../interface/operations-machine-interface";
 import data from "../../../assets/data/productos.json";
-import scanf from "scanf";
+import { IConsoleApplication } from "../interface/console-application-interface";
 
-export class OperationsMachineService implements OperationsMachine{
-  selection: string = "";
+export class OperationsMachine implements IOperationsMachine {
+  private console: IConsoleApplication;
+  selection: string;
   money: number;
   amount: number;
   products: IProduct[] = [];
   selectProduct: IProduct[];
   accesoProducto: IProduct;
-  
-  cargarProducto(): void {
-    this.products = data.productos;
-    this.products.forEach((p,i)=>{
-      console.log(`${i+1}. ${p.name} precios--> ${p.price} stock--> ${p.amount}`)
-    })    
+
+  constructor(console: IConsoleApplication) {
+    this.console = console;
   }
 
-  ingresarNombreProducto(): void {
-    console.log("Ingresa el nombre del producto");
-    this.selection = scanf("%s");
+  cargarProducto(): void {
+    this.products = data.productos;
+    this.products.forEach((producto, index) => {
+      console.log(
+        `${index + 1}. ${producto.name} precios--> ${producto.price} stock--> ${
+          producto.amount
+        }`
+      );
+    });
   }
 
   seleccionarProducto(): void {
+    this.selection = this.console.IngresarNombreProducto();
     let flag = true;
-    let find = this.products.some((p)=>{
+    let find = this.products.some((p) => {
       return p.name == this.selection;
     });
 
-    while(flag){
-      if(find){
-        this.selectProduct = this.products.filter((p)=>{
+    while (flag) {
+      if (find) {
+        this.selectProduct = this.products.filter((p) => {
           return p.name == this.selection;
-        })
+        });
         console.log(`Producto seleccionado--> ${this.selection}`);
         flag = false;
-      }else{
+      } else {
         console.log("El producto ingresado no se encuentra registrado");
-        this.ingresarNombreProducto();
+        this.selection = this.console.IngresarNombreProducto();
 
         find = this.products.some((p) => {
           return p.name == this.selection;
@@ -47,21 +52,17 @@ export class OperationsMachineService implements OperationsMachine{
     }
   }
 
-  ingresarBillete(): void {
-    console.log("Ingrese el billete para la compra");
-    this.money = scanf("%d");  
-  }
-
   comprarProducto(): void {
-    if(this.selection.length > 0){
+    this.money = this.console.IngresarDineroCompra();
+    if (this.selection.length > 0) {
       this.accesoProducto = this.selectProduct[0];
-      let flag = true
+      let flag = true;
 
-      while(flag){
+      while (flag) {
         this.cantidadProducto();
         let total = this.accesoProducto.price * this.amount;
-        
-        if(total < this.money){
+
+        if (total < this.money) {
           let devolucion = this.money - this.accesoProducto.price;
 
           console.log("***Venta Existosa***");
@@ -69,10 +70,10 @@ export class OperationsMachineService implements OperationsMachine{
           console.log(`Cantidad vendida ${this.amount}`);
           console.log(`Devolución ${devolucion}`);
 
-          flag = false;  
-        }else{
+          flag = false;
+        } else {
           console.log("Insuficiente fondo para obtener el producto");
-          this.ingresarBillete();
+          this.money = this.console.IngresarDineroCompra();
 
           total = this.accesoProducto.price * this.amount;
         }
@@ -80,26 +81,22 @@ export class OperationsMachineService implements OperationsMachine{
     }
   }
 
-  ingresarCantidad(): void {
-    console.log("Ingrese la cantidad deseada");
-    this.amount = scanf("%d");
-  }
-
   cantidadProducto(): void {
+    this.amount = this.console.IngresarCantidadProducto();
     let verficarCantidad = this.accesoProducto.amount >= this.amount;
     let flag = true;
 
-    while(flag){
-      if(verficarCantidad){
+    while (flag) {
+      if (verficarCantidad) {
         let newAmount = this.accesoProducto.amount - this.amount;
         this.accesoProducto.amount = newAmount;
 
         flag = false;
-      }else{
+      } else {
         console.log("No tenemos la cantidad del producto solicitado");
-        this.ingresarCantidad();
+        this.amount = this.console.IngresarCantidadProducto();
 
-        verficarCantidad = this.accesoProducto.amount >= this.amount
+        verficarCantidad = this.accesoProducto.amount >= this.amount;
       }
     }
   }

@@ -1,5 +1,4 @@
-
-export interface MenuMachine{
+export interface IMenuMachine{
   verProductos(): void;
   seleccionarProducto(): void;
   ingresarBillete(): void;

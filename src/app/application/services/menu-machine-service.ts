@@ -1,34 +1,23 @@
-import scanf from "scanf";
-import { MenuMachine } from "../../domain/interface/menu-machine-interface";
-import { OperationsMachine } from "../../domain/interface/operations-machine-interface";
+import { IMenuMachine } from "../../domain/interface/menu-machine-interface";
+import { IOperationsMachine } from "../../domain/interface/operations-machine-interface";
 
-export class MenuMachineService implements MenuMachine{
-  
-  private operations:OperationsMachine;
+export class MenuMachineService implements IMenuMachine {
+  private operations: IOperationsMachine;
 
-  constructor(operations:OperationsMachine){
+  constructor(operations: IOperationsMachine) {
     this.operations = operations;
   }
 
   verProductos(): void {
-    this.operations.cargarProducto();    
+    this.operations.cargarProducto();
   }
-  
   seleccionarProducto(): void {
-    this.operations.ingresarNombreProducto();
-    this.operations.seleccionarProducto();  
+    this.operations.seleccionarProducto();
   }
-  
   ingresarBillete(): void {
-    this.operations.ingresarBillete();
-    this.operations.ingresarCantidad();
-    this.operations.comprarProducto();  
+    this.operations.comprarProducto();
   }
-
-  salir():string{
-    console.log("Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir");
-    let instruccion = scanf("%s");
-
-    return instruccion;
+  salir(): string {
+    throw new Error("Method not implemented.");
   }
 }
