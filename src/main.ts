@@ -1,10 +1,10 @@
 import { Application } from "./app/app";
 import { MenuMachineService } from "./app/application/services/menu-machine-service";
-import { OperationsMachine } from "./app/domain/classes/operations-machine";
+import { MenuMachine } from "./app/domain/classes/menu-machine";
 import { ConsoleApplication } from "./app/ui/console/console-application";
 
 const app: Application = new Application(
-  new MenuMachineService(new OperationsMachine(new ConsoleApplication()))
+  new MenuMachineService(new MenuMachine(new ConsoleApplication()))
 );
 
 let flag = "si";

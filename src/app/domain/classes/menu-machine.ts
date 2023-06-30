@@ -1,9 +1,9 @@
 import { IProduct } from "../entitys/product-interface";
-import { IOperationsMachine } from "../interface/operations-machine-interface";
 import data from "../../../assets/data/productos.json";
 import { IConsoleApplication } from "../interface/console-application-interface";
+import { IMenuMachine } from "../interface/menu-machine-interface";
 
-export class OperationsMachine implements IOperationsMachine {
+export class MenuMachine implements  IMenuMachine{
   private console: IConsoleApplication;
   selection: string;
   money: number;
@@ -16,7 +16,7 @@ export class OperationsMachine implements IOperationsMachine {
     this.console = console;
   }
 
-  cargarProducto(): void {
+  verProductos(): void {
     this.products = data.productos;
     this.products.forEach((producto, index) => {
       console.log(
@@ -52,7 +52,7 @@ export class OperationsMachine implements IOperationsMachine {
     }
   }
 
-  comprarProducto(): void {
+  ingresarBillete(): void {
     this.money = this.console.IngresarDineroCompra();
     if (this.selection.length > 0) {
       this.accesoProducto = this.selectProduct[0];
@@ -81,6 +81,10 @@ export class OperationsMachine implements IOperationsMachine {
     }
   }
 
+  salir(): string {
+    return this.console.salirMaquina();
+  }
+  
   cantidadProducto(): void {
     this.amount = this.console.IngresarCantidadProducto();
     let verficarCantidad = this.accesoProducto.amount >= this.amount;

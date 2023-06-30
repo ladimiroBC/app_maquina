@@ -2,6 +2,7 @@ import scanf from "scanf";
 import { IConsoleApplication } from "../../domain/interface/console-application-interface";
 
 export class ConsoleApplication implements IConsoleApplication {
+  
   IngresarNombreProducto(): string {
     let name: string;
     console.log("Ingresa el nombre del producto");
@@ -18,5 +19,11 @@ export class ConsoleApplication implements IConsoleApplication {
     let amount: number;
     console.log("Ingresa la cantidad a comprar del producto");
     return amount = scanf("%d");
+  }
+
+  salirMaquina(): string {
+    let instruccion:string;
+    console.log("Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir");
+    return instruccion = scanf("%s");
   }
 }
