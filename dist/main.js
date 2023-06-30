@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app/app");
 const menu_machine_service_1 = require("./app/application/services/menu-machine-service");
-const operations_machine_1 = require("./app/domain/classes/operations-machine");
+const menu_machine_1 = require("./app/domain/classes/menu-machine");
 const console_application_1 = require("./app/ui/console/console-application");
-const app = new app_1.Application(new menu_machine_service_1.MenuMachineService(new operations_machine_1.OperationsMachine(new console_application_1.ConsoleApplication())));
+const app = new app_1.Application(new menu_machine_service_1.MenuMachineService(new menu_machine_1.MenuMachine(new console_application_1.ConsoleApplication())));
 let flag = "si";
 console.log("***BIENVENIDO A NUESTRA MAQUINA EXPENDEDORA***");
 while (flag === "si") {

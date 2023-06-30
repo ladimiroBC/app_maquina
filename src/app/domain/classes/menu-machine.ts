@@ -3,7 +3,7 @@ import data from "../../../assets/data/productos.json";
 import { IConsoleApplication } from "../interface/console-application-interface";
 import { IMenuMachine } from "../interface/menu-machine-interface";
 
-export class MenuMachine implements  IMenuMachine{
+export class MenuMachine implements IMenuMachine {
   private console: IConsoleApplication;
   selection: string;
   money: number;
@@ -57,9 +57,9 @@ export class MenuMachine implements  IMenuMachine{
     if (this.selection.length > 0) {
       this.accesoProducto = this.selectProduct[0];
       let flag = true;
+      this.cantidadProducto();
 
       while (flag) {
-        this.cantidadProducto();
         let total = this.accesoProducto.price * this.amount;
 
         if (total < this.money) {
@@ -84,7 +84,7 @@ export class MenuMachine implements  IMenuMachine{
   salir(): string {
     return this.console.salirMaquina();
   }
-  
+
   cantidadProducto(): void {
     this.amount = this.console.IngresarCantidadProducto();
     let verficarCantidad = this.accesoProducto.amount >= this.amount;

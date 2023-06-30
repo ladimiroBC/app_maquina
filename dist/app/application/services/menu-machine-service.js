@@ -2,20 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuMachineService = void 0;
 class MenuMachineService {
-    constructor(operations) {
-        this.operations = operations;
+    constructor(menu) {
+        this.menu = menu;
     }
     verProductos() {
-        this.operations.cargarProducto();
+        this.menu.verProductos();
     }
     seleccionarProducto() {
-        this.operations.seleccionarProducto();
+        this.menu.seleccionarProducto();
     }
     ingresarBillete() {
-        this.operations.comprarProducto();
+        this.menu.ingresarBillete();
     }
     salir() {
-        throw new Error("Method not implemented.");
+        return this.menu.salir();
     }
 }
 exports.MenuMachineService = MenuMachineService;

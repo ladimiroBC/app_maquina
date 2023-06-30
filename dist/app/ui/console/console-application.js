@@ -21,5 +21,10 @@ class ConsoleApplication {
         console.log("Ingresa la cantidad a comprar del producto");
         return amount = (0, scanf_1.default)("%d");
     }
+    salirMaquina() {
+        let instruccion;
+        console.log("Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir");
+        return instruccion = (0, scanf_1.default)("%s");
+    }
 }
 exports.ConsoleApplication = ConsoleApplication;
