@@ -5,25 +5,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConsoleApplication = void 0;
 const scanf_1 = __importDefault(require("scanf"));
+const console_app_text_1 = require("../../common/constants/console-app-text");
 class ConsoleApplication {
+    constructor(msn) {
+        this.msn = msn;
+    }
     IngresarNombreProducto() {
         let name;
-        console.log("Ingresa el nombre del producto");
+        this.msn.showMessage(console_app_text_1.ConsoleText.ingresaNombre);
         return name = (0, scanf_1.default)("%s");
     }
     IngresarDineroCompra() {
         let money;
-        console.log("Ingresa el dinero de la compra");
+        this.msn.showMessage(console_app_text_1.ConsoleText.ingresaDinero);
         return money = (0, scanf_1.default)("%d");
     }
     IngresarCantidadProducto() {
         let amount;
-        console.log("Ingresa la cantidad a comprar del producto");
+        this.msn.showMessage(console_app_text_1.ConsoleText.ingresaCantidad);
         return amount = (0, scanf_1.default)("%d");
     }
     salirMaquina() {
         let instruccion;
-        console.log("Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir");
+        this.msn.showMessage(console_app_text_1.ConsoleText.salirApp);
         return instruccion = (0, scanf_1.default)("%s");
     }
 }

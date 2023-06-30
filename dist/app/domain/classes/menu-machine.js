@@ -5,10 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuMachine = void 0;
 const productos_json_1 = __importDefault(require("../../../assets/data/productos.json"));
+const menu_machine_text_1 = require("../../common/constants/menu_machine-text");
 class MenuMachine {
-    constructor(console) {
+    constructor(console, msn) {
         this.products = [];
         this.console = console;
+        this.msn = msn;
     }
     verProductos() {
         this.products = productos_json_1.default.productos;
@@ -27,11 +29,12 @@ class MenuMachine {
                 this.selectProduct = this.products.filter((p) => {
                     return p.name == this.selection;
                 });
-                console.log(`Producto seleccionado--> ${this.selection}`);
+                this.msn.showMessage(menu_machine_text_1.MenuText.producto);
+                console.log(this.selection);
                 flag = false;
             }
             else {
-                console.log("El producto ingresado no se encuentra registrado");
+                this.msn.showMessage(menu_machine_text_1.MenuText.productoNoRegistrado);
                 this.selection = this.console.IngresarNombreProducto();
                 find = this.products.some((p) => {
                     return p.name == this.selection;
@@ -49,14 +52,14 @@ class MenuMachine {
                 let total = this.accesoProducto.price * this.amount;
                 if (total < this.money) {
                     let devolucion = this.money - this.accesoProducto.price;
-                    console.log("***Venta Existosa***");
+                    this.msn.showMessage(menu_machine_text_1.MenuText.venta);
                     console.log(`Producto ${this.accesoProducto.name} vendido`);
                     console.log(`Cantidad vendida ${this.amount}`);
                     console.log(`Devolución ${devolucion}`);
                     flag = false;
                 }
                 else {
-                    console.log("Insuficiente fondo para obtener el producto");
+                    this.msn.showMessage(menu_machine_text_1.MenuText.insufucienteFondo);
                     this.money = this.console.IngresarDineroCompra();
                     total = this.accesoProducto.price * this.amount;
                 }
@@ -77,7 +80,7 @@ class MenuMachine {
                 flag = false;
             }
             else {
-                console.log("No tenemos la cantidad del producto solicitado");
+                this.msn.showMessage(menu_machine_text_1.MenuText.insuficienteCantidad);
                 this.amount = this.console.IngresarCantidadProducto();
                 verficarCantidad = this.accesoProducto.amount >= this.amount;
             }

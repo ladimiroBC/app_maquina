@@ -2,9 +2,12 @@ import { IProduct } from "../entitys/product-interface";
 import data from "../../../assets/data/productos.json";
 import { IConsoleApplication } from "../interface/console-application-interface";
 import { IMenuMachine } from "../interface/menu-machine-interface";
+import { MessagesApp } from "../../ui/console/messages-application";
+import { MenuText } from "../../common/constants/menu_machine-text";
 
 export class MenuMachine implements IMenuMachine {
   private console: IConsoleApplication;
+  private msn: MessagesApp;
   selection: string;
   money: number;
   amount: number;
@@ -12,8 +15,9 @@ export class MenuMachine implements IMenuMachine {
   selectProduct: IProduct[];
   accesoProducto: IProduct;
 
-  constructor(console: IConsoleApplication) {
+  constructor(console: IConsoleApplication, msn: MessagesApp) {
     this.console = console;
+    this.msn = msn;
   }
 
   verProductos(): void {
@@ -39,10 +43,11 @@ export class MenuMachine implements IMenuMachine {
         this.selectProduct = this.products.filter((p) => {
           return p.name == this.selection;
         });
-        console.log(`Producto seleccionado--> ${this.selection}`);
+        this.msn.showMessage(MenuText.producto);
+        console.log(this.selection);
         flag = false;
       } else {
-        console.log("El producto ingresado no se encuentra registrado");
+        this.msn.showMessage(MenuText.productoNoRegistrado);
         this.selection = this.console.IngresarNombreProducto();
 
         find = this.products.some((p) => {
@@ -65,14 +70,14 @@ export class MenuMachine implements IMenuMachine {
         if (total < this.money) {
           let devolucion = this.money - this.accesoProducto.price;
 
-          console.log("***Venta Existosa***");
+          this.msn.showMessage(MenuText.venta);
           console.log(`Producto ${this.accesoProducto.name} vendido`);
           console.log(`Cantidad vendida ${this.amount}`);
           console.log(`Devolución ${devolucion}`);
 
           flag = false;
         } else {
-          console.log("Insuficiente fondo para obtener el producto");
+          this.msn.showMessage(MenuText.insufucienteFondo);
           this.money = this.console.IngresarDineroCompra();
 
           total = this.accesoProducto.price * this.amount;
@@ -97,7 +102,7 @@ export class MenuMachine implements IMenuMachine {
 
         flag = false;
       } else {
-        console.log("No tenemos la cantidad del producto solicitado");
+        this.msn.showMessage(MenuText.insuficienteCantidad);
         this.amount = this.console.IngresarCantidadProducto();
 
         verficarCantidad = this.accesoProducto.amount >= this.amount;

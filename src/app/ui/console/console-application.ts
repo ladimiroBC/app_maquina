@@ -1,29 +1,33 @@
 import scanf from "scanf";
 import { IConsoleApplication } from "../../domain/interface/console-application-interface";
+import { MessagesApp } from "./messages-application";
+import { ConsoleText } from "../../common/constants/console-app-text";
 
 export class ConsoleApplication implements IConsoleApplication {
   
+  constructor(private msn:MessagesApp){}
+
   IngresarNombreProducto(): string {
     let name: string;
-    console.log("Ingresa el nombre del producto");
+    this.msn.showMessage(ConsoleText.ingresaNombre);
     return name = scanf("%s");
   }
 
   IngresarDineroCompra(): number {
     let money: number;
-    console.log("Ingresa el dinero de la compra");
+    this.msn.showMessage(ConsoleText.ingresaDinero);
     return money = scanf("%d");
   }
   
   IngresarCantidadProducto(): number {
     let amount: number;
-    console.log("Ingresa la cantidad a comprar del producto");
+    this.msn.showMessage(ConsoleText.ingresaCantidad);
     return amount = scanf("%d");
   }
 
   salirMaquina(): string {
     let instruccion:string;
-    console.log("Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir");
+    this.msn.showMessage(ConsoleText.salirApp);
     return instruccion = scanf("%s");
   }
 }
