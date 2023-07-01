@@ -6,5 +6,5 @@ var ConsoleText;
     ConsoleText["ingresaNombre"] = "Ingresa el nombre del producto";
     ConsoleText["ingresaDinero"] = "Ingresa el dinero de la compra";
     ConsoleText["ingresaCantidad"] = "Ingresa cantidad del producto a comprar";
-    ConsoleText["salirApp"] = "Quiere seguir en nuestra aplicacion, digite 'si' para continuar, 'no' para salir";
+    ConsoleText["salirApp"] = "Gracias por utilizar nuestros servicios, que vuelva pronto :)";
 })(ConsoleText = exports.ConsoleText || (exports.ConsoleText = {}));

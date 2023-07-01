@@ -4,4 +4,5 @@ export enum Menu {
     ACCION_2 = "2. Seleccionar el producto",
     ACCION_3 = "3. Ingresar dinero",
     ACCION_4 = "4. Salir",
+    PREGUNTA = "¿Que accion desea realizar?"
 }

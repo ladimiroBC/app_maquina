@@ -15,7 +15,7 @@ class MenuMachineService {
         this.menu.ingresarBillete();
     }
     salir() {
-        return this.menu.salir();
+        this.menu.salir();
     }
 }
 exports.MenuMachineService = MenuMachineService;

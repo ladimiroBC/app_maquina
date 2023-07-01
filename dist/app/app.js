@@ -1,21 +1,34 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
+const scanf_1 = __importDefault(require("scanf"));
 class Application {
-    constructor(menu) {
+    constructor(machine, menu) {
+        this.machine = machine;
         this.menu = menu;
     }
-    verProductos() {
-        this.menu.verProductos();
-    }
-    seleccionarProducto() {
-        this.menu.seleccionarProducto();
-    }
-    ingresarBillete() {
-        this.menu.ingresarBillete();
-    }
-    salir() {
-        return this.menu.salir();
+    myStartConsole() {
+        this.menu.start();
+        let instruccion = (0, scanf_1.default)("%d");
+        switch (instruccion) {
+            case 1:
+                this.machine.verProductos();
+                break;
+            case 2:
+                this.machine.seleccionarProducto();
+                break;
+            case 3:
+                this.machine.ingresarBillete();
+                break;
+            case 4:
+                this.machine.salir();
+                break;
+            default:
+                console.log("Lo sentimos, opcion no disponible :(");
+        }
     }
 }
 exports.Application = Application;

@@ -3,5 +3,6 @@ export enum MenuMachineText {
   productoNoRegistrado = "El producto ingresado no se encuentra registrado",
   venta = "***Venta Existosa***",
   insufucienteFondo = "Insuficiente fondo para obtener el producto",
-  insuficienteCantidad = "No tenemos la cantidad del producto solicitado"
+  insuficienteCantidad = "No tenemos la cantidad del producto solicitado",
+  compraCancelada = "No puede realizar la compra sin haber seleccionado el producto"
 }

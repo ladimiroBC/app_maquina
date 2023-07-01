@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MenuText = void 0;
-var MenuText;
-(function (MenuText) {
-    MenuText["producto"] = "***Producto seleccionado***";
-    MenuText["productoNoRegistrado"] = "El producto ingresado no se encuentra registrado";
-    MenuText["venta"] = "***Venta Existosa***";
-    MenuText["insufucienteFondo"] = "Insuficiente fondo para obtener el producto";
-    MenuText["insuficienteCantidad"] = "No tenemos la cantidad del producto solicitado";
-})(MenuText = exports.MenuText || (exports.MenuText = {}));
+exports.MenuMachineText = void 0;
+var MenuMachineText;
+(function (MenuMachineText) {
+    MenuMachineText["producto"] = "***Producto seleccionado***";
+    MenuMachineText["productoNoRegistrado"] = "El producto ingresado no se encuentra registrado";
+    MenuMachineText["venta"] = "***Venta Existosa***";
+    MenuMachineText["insufucienteFondo"] = "Insuficiente fondo para obtener el producto";
+    MenuMachineText["insuficienteCantidad"] = "No tenemos la cantidad del producto solicitado";
+    MenuMachineText["compraCancelada"] = "No puede realizar la compra sin haber seleccionado el producto";
+})(MenuMachineText = exports.MenuMachineText || (exports.MenuMachineText = {}));

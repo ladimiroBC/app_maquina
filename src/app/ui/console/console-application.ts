@@ -1,11 +1,12 @@
 import scanf from "scanf";
 import { IConsoleApplication } from "../../domain/interface/console-application-interface";
-import { MessagesApp } from "./messages-application";
 import { ConsoleText } from "../../common/constants/console-app-text";
+import { IMessagesApp } from "../../domain/interface/messages-application-interface";
+import { IMenuView } from "../../domain/interface/menu-view-interface";
 
 export class ConsoleApplication implements IConsoleApplication {
   
-  constructor(private msn:MessagesApp){}
+  constructor(private msn:IMessagesApp, private menu:IMenuView){}
 
   IngresarNombreProducto(): string {
     let name: string;
@@ -25,13 +26,11 @@ export class ConsoleApplication implements IConsoleApplication {
     return amount = scanf("%d");
   }
 
-  salirMaquina(): string {
-    let instruccion:string;
+  salirMaquina(): void {
     this.msn.showMessage(ConsoleText.salirApp);
-    return instruccion = scanf("%s");
   }
 
-  // start(){
-  //   showMenu(){}
-  // }
+  start(){
+    this.menu.imprimirMenu();
+  }
 }

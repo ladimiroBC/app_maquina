@@ -7,8 +7,9 @@ exports.ConsoleApplication = void 0;
 const scanf_1 = __importDefault(require("scanf"));
 const console_app_text_1 = require("../../common/constants/console-app-text");
 class ConsoleApplication {
-    constructor(msn) {
+    constructor(msn, menu) {
         this.msn = msn;
+        this.menu = menu;
     }
     IngresarNombreProducto() {
         let name;
@@ -26,9 +27,10 @@ class ConsoleApplication {
         return amount = (0, scanf_1.default)("%d");
     }
     salirMaquina() {
-        let instruccion;
         this.msn.showMessage(console_app_text_1.ConsoleText.salirApp);
-        return instruccion = (0, scanf_1.default)("%s");
+    }
+    start() {
+        this.menu.imprimirMenu();
     }
 }
 exports.ConsoleApplication = ConsoleApplication;

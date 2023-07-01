@@ -1,6 +1,6 @@
 import { IMenuMachine } from "../../domain/interface/menu-machine-interface";
 
-export class MenuMachineService implements IMenuMachine {
+export class MenuMachineService {
   private menu: IMenuMachine;
 
   constructor(menu: IMenuMachine) {
@@ -16,7 +16,7 @@ export class MenuMachineService implements IMenuMachine {
   ingresarBillete(): void {
     this.menu.ingresarBillete();
   }
-  salir(): string {
-    return this.menu.salir();
+  salir(): void {
+    this.menu.salir();
   }
 }

@@ -8,6 +8,7 @@ const productos_json_1 = __importDefault(require("../../../assets/data/productos
 const menu_machine_text_1 = require("../../common/constants/menu_machine-text");
 class MenuMachine {
     constructor(console, msn) {
+        this.selection = "";
         this.products = [];
         this.console = console;
         this.msn = msn;
@@ -29,12 +30,12 @@ class MenuMachine {
                 this.selectProduct = this.products.filter((p) => {
                     return p.name == this.selection;
                 });
-                this.msn.showMessage(menu_machine_text_1.MenuText.producto);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.producto);
                 console.log(this.selection);
                 flag = false;
             }
             else {
-                this.msn.showMessage(menu_machine_text_1.MenuText.productoNoRegistrado);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.productoNoRegistrado);
                 this.selection = this.console.IngresarNombreProducto();
                 find = this.products.some((p) => {
                     return p.name == this.selection;
@@ -43,8 +44,8 @@ class MenuMachine {
         }
     }
     ingresarBillete() {
-        this.money = this.console.IngresarDineroCompra();
         if (this.selection.length > 0) {
+            this.money = this.console.IngresarDineroCompra();
             this.accesoProducto = this.selectProduct[0];
             let flag = true;
             this.cantidadProducto();
@@ -52,22 +53,25 @@ class MenuMachine {
                 let total = this.accesoProducto.price * this.amount;
                 if (total < this.money) {
                     let devolucion = this.money - this.accesoProducto.price;
-                    this.msn.showMessage(menu_machine_text_1.MenuText.venta);
+                    this.msn.showMessage(menu_machine_text_1.MenuMachineText.venta);
                     console.log(`Producto ${this.accesoProducto.name} vendido`);
                     console.log(`Cantidad vendida ${this.amount}`);
                     console.log(`Devolución ${devolucion}`);
                     flag = false;
                 }
                 else {
-                    this.msn.showMessage(menu_machine_text_1.MenuText.insufucienteFondo);
+                    this.msn.showMessage(menu_machine_text_1.MenuMachineText.insufucienteFondo);
                     this.money = this.console.IngresarDineroCompra();
                     total = this.accesoProducto.price * this.amount;
                 }
             }
         }
+        else {
+            this.msn.showMessage(menu_machine_text_1.MenuMachineText.compraCancelada);
+        }
     }
     salir() {
-        return this.console.salirMaquina();
+        this.console.salirMaquina();
     }
     cantidadProducto() {
         this.amount = this.console.IngresarCantidadProducto();
@@ -80,7 +84,7 @@ class MenuMachine {
                 flag = false;
             }
             else {
-                this.msn.showMessage(menu_machine_text_1.MenuText.insuficienteCantidad);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.insuficienteCantidad);
                 this.amount = this.console.IngresarCantidadProducto();
                 verficarCantidad = this.accesoProducto.amount >= this.amount;
             }

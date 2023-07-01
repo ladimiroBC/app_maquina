@@ -2,20 +2,20 @@ import { IProduct } from "../entitys/product-interface";
 import data from "../../../assets/data/productos.json";
 import { IConsoleApplication } from "../interface/console-application-interface";
 import { IMenuMachine } from "../interface/menu-machine-interface";
-import { MessagesApp } from "../../ui/console/messages-application";
 import { MenuMachineText } from "../../common/constants/menu_machine-text";
+import { IMessagesApp } from "../interface/messages-application-interface";
 
 export class MenuMachine implements IMenuMachine {
   private console: IConsoleApplication;
-  private msn: MessagesApp;
-  selection: string;
+  private msn: IMessagesApp;
+  selection: string = "";
   money: number;
   amount: number;
   products: IProduct[] = [];
   selectProduct: IProduct[];
   accesoProducto: IProduct;
 
-  constructor(console: IConsoleApplication, msn: MessagesApp) {
+  constructor(console: IConsoleApplication, msn: IMessagesApp) {
     this.console = console;
     this.msn = msn;
   }
@@ -58,8 +58,8 @@ export class MenuMachine implements IMenuMachine {
   }
 
   ingresarBillete(): void {
-    this.money = this.console.IngresarDineroCompra();
-    if (this.selection.length > 0) {
+    if(this.selection.length > 0) {
+      this.money = this.console.IngresarDineroCompra();
       this.accesoProducto = this.selectProduct[0];
       let flag = true;
       this.cantidadProducto();
@@ -83,11 +83,13 @@ export class MenuMachine implements IMenuMachine {
           total = this.accesoProducto.price * this.amount;
         }
       }
+    } else {
+      this.msn.showMessage(MenuMachineText.compraCancelada);
     }
   }
 
-  salir(): string {
-    return this.console.salirMaquina();
+  salir(): void {
+    this.console.salirMaquina();
   }
 
   cantidadProducto(): void {
