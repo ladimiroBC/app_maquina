@@ -1,6 +1,6 @@
 import { IMenuMachine } from "../../domain/interface/menu-machine-interface";
 
-export class MenuMachineService implements IMenuMachine {
+export class MenuMachineService {
   private menu: IMenuMachine;
 
   constructor(menu: IMenuMachine) {
