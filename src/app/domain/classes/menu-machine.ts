@@ -3,7 +3,7 @@ import data from "../../../assets/data/productos.json";
 import { IConsoleApplication } from "../interface/console-application-interface";
 import { IMenuMachine } from "../interface/menu-machine-interface";
 import { MessagesApp } from "../../ui/console/messages-application";
-import { MenuText } from "../../common/constants/menu_machine-text";
+import { MenuMachineText } from "../../common/constants/menu_machine-text";
 
 export class MenuMachine implements IMenuMachine {
   private console: IConsoleApplication;
@@ -43,11 +43,11 @@ export class MenuMachine implements IMenuMachine {
         this.selectProduct = this.products.filter((p) => {
           return p.name == this.selection;
         });
-        this.msn.showMessage(MenuText.producto);
+        this.msn.showMessage(MenuMachineText.producto);
         console.log(this.selection);
         flag = false;
       } else {
-        this.msn.showMessage(MenuText.productoNoRegistrado);
+        this.msn.showMessage(MenuMachineText.productoNoRegistrado);
         this.selection = this.console.IngresarNombreProducto();
 
         find = this.products.some((p) => {
@@ -70,14 +70,14 @@ export class MenuMachine implements IMenuMachine {
         if (total < this.money) {
           let devolucion = this.money - this.accesoProducto.price;
 
-          this.msn.showMessage(MenuText.venta);
+          this.msn.showMessage(MenuMachineText.venta);
           console.log(`Producto ${this.accesoProducto.name} vendido`);
           console.log(`Cantidad vendida ${this.amount}`);
           console.log(`Devolución ${devolucion}`);
 
           flag = false;
         } else {
-          this.msn.showMessage(MenuText.insufucienteFondo);
+          this.msn.showMessage(MenuMachineText.insufucienteFondo);
           this.money = this.console.IngresarDineroCompra();
 
           total = this.accesoProducto.price * this.amount;
@@ -102,7 +102,7 @@ export class MenuMachine implements IMenuMachine {
 
         flag = false;
       } else {
-        this.msn.showMessage(MenuText.insuficienteCantidad);
+        this.msn.showMessage(MenuMachineText.insuficienteCantidad);
         this.amount = this.console.IngresarCantidadProducto();
 
         verficarCantidad = this.accesoProducto.amount >= this.amount;

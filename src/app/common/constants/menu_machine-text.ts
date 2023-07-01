@@ -1,4 +1,4 @@
-export enum MenuText {
+export enum MenuMachineText {
   producto = "***Producto seleccionado***",
   productoNoRegistrado = "El producto ingresado no se encuentra registrado",
   venta = "***Venta Existosa***",
