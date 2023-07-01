@@ -30,4 +30,8 @@ export class ConsoleApplication implements IConsoleApplication {
     this.msn.showMessage(ConsoleText.salirApp);
     return instruccion = scanf("%s");
   }
+
+  // start(){
+  //   showMenu(){}
+  // }
 }

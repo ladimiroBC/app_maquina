@@ -4,6 +4,7 @@ import { MenuMachine } from "./app/domain/classes/menu-machine";
 import { ConsoleApplication } from "./app/ui/console/console-application";
 import { MessagesApp } from "./app/ui/console/messages-application";
 
+//app.myStartConsole();
 const app: Application = new Application(
   new MenuMachineService(
     new MenuMachine(

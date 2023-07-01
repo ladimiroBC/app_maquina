@@ -22,4 +22,9 @@ export class Application {
   salir(): string {
     return this.menu.salir();
   }
+
+  // myStartConsole(){
+    
+  // }
+
 }
