@@ -11,8 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "scanf": "^1.1.2"
-  },
-  "devDependencies": {
-    "@types/node": "^20.3.2"
   }
 }

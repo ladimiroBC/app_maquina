@@ -34,14 +34,14 @@ export class MenuMachine implements IMenuMachine {
   seleccionarProducto(): void {
     this.selection = this.console.IngresarNombreProducto();
     let flag = true;
-    let find = this.products.some((p) => {
-      return p.name == this.selection;
+    let find = this.products.some((producto) => {
+      return producto.name == this.selection;
     });
 
     while (flag) {
       if (find) {
-        this.selectProduct = this.products.filter((p) => {
-          return p.name == this.selection;
+        this.selectProduct = this.products.filter((producto) => {
+          return producto.name == this.selection;
         });
         this.msn.showMessage(MenuMachineText.producto);
         console.log(this.selection);
@@ -50,8 +50,8 @@ export class MenuMachine implements IMenuMachine {
         this.msn.showMessage(MenuMachineText.productoNoRegistrado);
         this.selection = this.console.IngresarNombreProducto();
 
-        find = this.products.some((p) => {
-          return p.name == this.selection;
+        find = this.products.some((producto) => {
+          return producto.name == this.selection;
         });
       }
     }
