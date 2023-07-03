@@ -58,7 +58,7 @@ export class MenuMachine implements IMenuMachine {
   }
 
   ingresarBillete(): void {
-    if(this.selection.length > 0) {
+    if (this.selection.length > 0) {
       this.money = this.console.IngresarDineroCompra();
       this.accesoProducto = this.selectProduct[0];
       let flag = true;
