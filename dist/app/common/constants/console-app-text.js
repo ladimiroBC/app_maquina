@@ -8,3 +8,4 @@ var ConsoleText;
     ConsoleText["ingresaCantidad"] = "Ingresa cantidad del producto a comprar";
     ConsoleText["salirApp"] = "Gracias por utilizar nuestros servicios, que vuelva pronto :)";
 })(ConsoleText = exports.ConsoleText || (exports.ConsoleText = {}));
+//# sourceMappingURL=console-app-text.js.map

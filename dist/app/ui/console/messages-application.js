@@ -7,3 +7,4 @@ class MessagesApp {
     }
 }
 exports.MessagesApp = MessagesApp;
+//# sourceMappingURL=messages-application.js.map

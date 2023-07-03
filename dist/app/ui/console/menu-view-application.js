@@ -11,3 +11,4 @@ class MenuView {
     }
 }
 exports.MenuView = MenuView;
+//# sourceMappingURL=menu-view-application.js.map

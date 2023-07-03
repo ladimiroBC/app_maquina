@@ -20,15 +20,16 @@ class MenuMachine {
         });
     }
     seleccionarProducto() {
+        this.products = productos_json_1.default.productos;
         this.selection = this.console.IngresarNombreProducto();
         let flag = true;
-        let find = this.products.some((p) => {
-            return p.name == this.selection;
+        let find = this.products.some((producto) => {
+            return producto.name == this.selection;
         });
         while (flag) {
             if (find) {
-                this.selectProduct = this.products.filter((p) => {
-                    return p.name == this.selection;
+                this.selectProduct = this.products.filter((producto) => {
+                    return producto.name == this.selection;
                 });
                 this.msn.showMessage(menu_machine_text_1.MenuMachineText.producto);
                 console.log(this.selection);
@@ -37,8 +38,8 @@ class MenuMachine {
             else {
                 this.msn.showMessage(menu_machine_text_1.MenuMachineText.productoNoRegistrado);
                 this.selection = this.console.IngresarNombreProducto();
-                find = this.products.some((p) => {
-                    return p.name == this.selection;
+                find = this.products.some((producto) => {
+                    return producto.name == this.selection;
                 });
             }
         }
@@ -92,3 +93,4 @@ class MenuMachine {
     }
 }
 exports.MenuMachine = MenuMachine;
+//# sourceMappingURL=menu-machine.js.map

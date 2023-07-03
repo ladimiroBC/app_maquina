@@ -10,3 +10,4 @@ var MenuMachineText;
     MenuMachineText["insuficienteCantidad"] = "No tenemos la cantidad del producto solicitado";
     MenuMachineText["compraCancelada"] = "No puede realizar la compra sin haber seleccionado el producto";
 })(MenuMachineText = exports.MenuMachineText || (exports.MenuMachineText = {}));
+//# sourceMappingURL=menu_machine-text.js.map

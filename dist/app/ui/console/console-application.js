@@ -34,3 +34,4 @@ class ConsoleApplication {
     }
 }
 exports.ConsoleApplication = ConsoleApplication;
+//# sourceMappingURL=console-application.js.map

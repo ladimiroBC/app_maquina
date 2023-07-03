@@ -10,3 +10,4 @@ var Menu;
     Menu["ACCION_4"] = "4. Salir";
     Menu["PREGUNTA"] = "\u00BFQue accion desea realizar?";
 })(Menu = exports.Menu || (exports.Menu = {}));
+//# sourceMappingURL=view-menu-text.js.map

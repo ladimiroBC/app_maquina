@@ -32,6 +32,7 @@ export class MenuMachine implements IMenuMachine {
   }
 
   seleccionarProducto(): void {
+    this.products = data.productos;
     this.selection = this.console.IngresarNombreProducto();
     let flag = true;
     let find = this.products.some((producto) => {
