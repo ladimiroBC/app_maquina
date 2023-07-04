@@ -1,6 +1,9 @@
+import { IProduct } from "../entitys/product-interface";
+
 export interface IMenuMachine{
-  verProductos(): void;
-  seleccionarProducto(): void;
-  ingresarBillete(): void;
-  salir(): void;
+  createProduct(product: IProduct): void;
+  showProducts(): IProduct[];
+  selectionProduct(selection:string): void;
+  getMoney(money:number): void;
+  exit(): void;
 }

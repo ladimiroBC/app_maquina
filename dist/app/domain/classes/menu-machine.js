@@ -13,6 +13,9 @@ class MenuMachine {
         this.console = console;
         this.msn = msn;
     }
+    crearProducto(producto) {
+        this.products.push(producto);
+    }
     verProductos() {
         this.products = productos_json_1.default.productos;
         this.products.forEach((producto, index) => {

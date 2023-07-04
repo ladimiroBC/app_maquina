@@ -6,10 +6,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConsoleApplication = void 0;
 const scanf_1 = __importDefault(require("scanf"));
 const console_app_text_1 = require("../../common/constants/console-app-text");
+const form_producto_text_1 = require("../../common/constants/form-producto-text");
 class ConsoleApplication {
     constructor(msn, menu) {
         this.msn = msn;
         this.menu = menu;
+        this.producto = {
+            name: "",
+            price: 0,
+            amount: 0
+        };
+    }
+    FormularioProducto() {
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarNombre);
+        let name = (0, scanf_1.default)("%s");
+        this.producto.name = name;
+        console.log(this.producto.name);
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarPrecio);
+        this.producto.price = (0, scanf_1.default)("%d");
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarCantidad);
+        this.producto.amount = (0, scanf_1.default)("%d");
+        return this.producto;
     }
     IngresarNombreProducto() {
         let name;

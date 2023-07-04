@@ -26,6 +26,10 @@ class Application {
             case 4:
                 this.machine.salir();
                 break;
+            case 5:
+                let producto = this.menu.FormularioProducto();
+                this.machine.crearProducto(producto);
+                break;
             default:
                 console.log("Lo sentimos, opcion no disponible :(");
         }

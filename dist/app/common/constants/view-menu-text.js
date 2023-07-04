@@ -8,6 +8,7 @@ var Menu;
     Menu["ACCION_2"] = "2. Seleccionar el producto";
     Menu["ACCION_3"] = "3. Ingresar dinero";
     Menu["ACCION_4"] = "4. Salir";
+    Menu["ACCION_5"] = "5. Ingresar producto";
     Menu["PREGUNTA"] = "\u00BFQue accion desea realizar?";
 })(Menu = exports.Menu || (exports.Menu = {}));
 //# sourceMappingURL=view-menu-text.js.map

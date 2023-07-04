@@ -5,6 +5,9 @@ class MenuMachineService {
     constructor(menu) {
         this.menu = menu;
     }
+    crearProducto(producto) {
+        this.menu.crearProducto(producto);
+    }
     verProductos() {
         this.menu.verProductos();
     }
