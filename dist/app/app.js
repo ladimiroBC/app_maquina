@@ -6,29 +6,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
 const scanf_1 = __importDefault(require("scanf"));
 class Application {
-    constructor(machine, menu) {
-        this.machine = machine;
-        this.menu = menu;
+    constructor(views) {
+        this.views = views;
     }
     myStartConsole() {
-        this.menu.start();
-        let instruccion = (0, scanf_1.default)("%d");
-        switch (instruccion) {
+        this.views.viewMenu();
+        let instruction = (0, scanf_1.default)("%d");
+        switch (instruction) {
             case 1:
-                this.machine.verProductos();
+                this.views.viewCreateProduct();
                 break;
             case 2:
-                this.machine.seleccionarProducto();
+                this.views.viewShowProduct();
                 break;
             case 3:
-                this.machine.ingresarBillete();
+                this.views.viewSelectProduct();
                 break;
             case 4:
-                this.machine.salir();
+                this.views.viewGetMoney();
                 break;
             case 5:
-                let producto = this.menu.FormularioProducto();
-                this.machine.crearProducto(producto);
+                this.views.viewExit();
                 break;
             default:
                 console.log("Lo sentimos, opcion no disponible :(");

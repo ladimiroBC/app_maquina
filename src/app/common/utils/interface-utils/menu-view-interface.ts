@@ -1,3 +1,3 @@
 export interface IMenuView {
-  imprimirMenu():void;
+  printMenu():void;
 }

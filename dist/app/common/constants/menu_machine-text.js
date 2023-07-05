@@ -8,6 +8,5 @@ var MenuMachineText;
     MenuMachineText["venta"] = "***Venta Existosa***";
     MenuMachineText["insufucienteFondo"] = "Insuficiente fondo para obtener el producto";
     MenuMachineText["insuficienteCantidad"] = "No tenemos la cantidad del producto solicitado";
-    MenuMachineText["compraCancelada"] = "No puede realizar la compra sin haber seleccionado el producto";
 })(MenuMachineText = exports.MenuMachineText || (exports.MenuMachineText = {}));
 //# sourceMappingURL=menu_machine-text.js.map

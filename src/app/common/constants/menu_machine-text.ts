@@ -4,5 +4,4 @@ export enum MenuMachineText {
   venta = "***Venta Existosa***",
   insufucienteFondo = "Insuficiente fondo para obtener el producto",
   insuficienteCantidad = "No tenemos la cantidad del producto solicitado",
-  compraCancelada = "No puede realizar la compra sin haber seleccionado el producto"
 }

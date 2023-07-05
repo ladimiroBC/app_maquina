@@ -1,40 +1,33 @@
-import { IProduct } from './domain/entitys/product-interface';
 import scanf from "scanf";
-import { IConsoleApplication } from "./domain/interface/console-application-interface";
-import { IMenuMachine } from "./domain/interface/menu-machine-interface";
-import { MenuMachineService } from './application/services/menu-machine-service';
+import { IViewsApplication } from "./ui/console/components/views-applications-interface";
+
 
 export class Application {
-  private machine: MenuMachineService;
-  private menu: IConsoleApplication;
-
-  constructor(machine: MenuMachineService, menu: IConsoleApplication) {
-    this.machine = machine;
-    this.menu = menu;
-  }
-
-  myStartConsole() {
-    this.menu.start();
-    let instruccion = scanf("%d");
-    switch (instruccion) {
+  
+  constructor(private views:IViewsApplication){}
+  
+  myStartConsole(){
+    this.views.viewMenu();
+    let instruction = scanf("%d");
+    
+    switch (instruction) {
       case 1:
-        this.machine.verProductos();
+        this.views.viewCreateProduct();
         break;
       case 2:
-        this.machine.seleccionarProducto();
+        this.views.viewShowProduct();
         break;
       case 3:
-        this.machine.ingresarBillete();
+        this.views.viewSelectProduct();
         break;
       case 4:
-        this.machine.salir();
+        this.views.viewGetMoney();
         break;
       case 5:
-        let producto = this.menu.FormularioProducto();
-        this.machine.crearProducto(producto);
-        break;  
+        this.views.viewExit();
+        break;
       default:
-        console.log("Lo sentimos, opcion no disponible :(");
+        console.log("Lo sentimos, opcion no disponible :(");          
     }
   }
 }
