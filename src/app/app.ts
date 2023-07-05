@@ -1,7 +1,6 @@
 import scanf from "scanf";
 import { IViewsApplication } from "./ui/console/components/views-applications-interface";
 
-
 export class Application {
   
   constructor(private views:IViewsApplication){}
@@ -27,7 +26,7 @@ export class Application {
         this.views.viewExit();
         break;
       default:
-        console.log("Lo sentimos, opcion no disponible :(");          
+        console.log("Sorry, option not available :(");          
     }
   }
 }

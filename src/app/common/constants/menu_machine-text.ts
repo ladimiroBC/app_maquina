@@ -1,7 +1,7 @@
 export enum MenuMachineText {
-  producto = "***Producto seleccionado***",
-  productoNoRegistrado = "El producto ingresado no se encuentra registrado",
-  venta = "***Venta Existosa***",
-  insufucienteFondo = "Insuficiente fondo para obtener el producto",
-  insuficienteCantidad = "No tenemos la cantidad del producto solicitado",
+  PRODUCT = "***Product Selected***",
+  PRODUCT_NOT_REGISTRED = "The entered product is not registered",
+  SALE = "***Successful Sale***",
+  INSUFFICIENT_BACKGROUND = "Insufficient fund to obtain the product",
+  INSUFFICIENTE_AMOUNT = "We do not have the quantity of the requested product",
 }

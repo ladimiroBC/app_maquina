@@ -24,14 +24,14 @@ class MenuMachineService {
             let total = this.accesProduct.price * this.amount;
             if (total < money) {
                 let change = money - this.accesProduct.price;
-                this.msn.showMessage(menu_machine_text_1.MenuMachineText.venta);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.SALE);
                 console.log(`Product ${this.accesProduct.name} sold`);
                 console.log(`Amount sold ${this.amount}`);
                 console.log(`Change ${change}`);
                 flag = false;
             }
             else {
-                this.msn.showMessage(menu_machine_text_1.MenuMachineText.insufucienteFondo);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.INSUFFICIENT_BACKGROUND);
                 flag = false;
             }
         }
@@ -50,13 +50,13 @@ class MenuMachineService {
                     return product.name == this.selection;
                 });
                 this.accesProduct = this.selectProduct[0];
-                this.msn.showMessage(menu_machine_text_1.MenuMachineText.producto);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.PRODUCT);
                 console.log(this.selection);
                 flag = false;
                 return (flag2 = "si");
             }
             else {
-                this.msn.showMessage(menu_machine_text_1.MenuMachineText.productoNoRegistrado);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.PRODUCT_NOT_REGISTRED);
                 flag = false;
             }
         }
@@ -78,13 +78,13 @@ class MenuMachineService {
                 return (flag2 = "si");
             }
             else {
-                this.msn.showMessage(menu_machine_text_1.MenuMachineText.insuficienteCantidad);
+                this.msn.showMessage(menu_machine_text_1.MenuMachineText.INSUFFICIENTE_AMOUNT);
                 flag = false;
             }
         }
     }
     exit() {
-        this.msn.showMessage(console_app_text_1.ConsoleText.salirApp);
+        this.msn.showMessage(console_app_text_1.ConsoleText.EXIT_APP);
     }
 }
 exports.MenuMachineService = MenuMachineService;

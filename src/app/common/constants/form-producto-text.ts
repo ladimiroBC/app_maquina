@@ -1,5 +1,5 @@
 export enum FormProduct {
-  IngresarNombre = "Ingrese el nombre del producto",
-  IngresarPrecio = "Ingrese el precio del producto",
-  IngresarCantidad = "Ingrese la cantidad del producto"
+  ENTER_NAME = "Enter the product name",
+  ENTER_PRICE = "Enter the price of the product",
+  ENTER_AMOUNT = "Enter the quantity of the product"
 }

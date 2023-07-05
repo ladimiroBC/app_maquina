@@ -29,7 +29,7 @@ class Application {
                 this.views.viewExit();
                 break;
             default:
-                console.log("Lo sentimos, opcion no disponible :(");
+                console.log("Sorry, option not available :(");
         }
     }
 }

@@ -16,11 +16,11 @@ class FormCreateProduct {
         };
     }
     formularioProduct() {
-        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarNombre);
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.ENTER_NAME);
         this.product.name = (0, scanf_1.default)("%s");
-        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarPrecio);
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.ENTER_PRICE);
         this.product.price = (0, scanf_1.default)("%d");
-        this.msn.showFormProducto(form_producto_text_1.FormProduct.IngresarCantidad);
+        this.msn.showFormProducto(form_producto_text_1.FormProduct.ENTER_AMOUNT);
         this.product.amount = (0, scanf_1.default)("%d");
         return this.product;
     }

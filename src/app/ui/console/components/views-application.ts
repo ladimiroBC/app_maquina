@@ -32,7 +32,7 @@ export class ViewsApplication implements IViewsApplication {
 
   viewSelectProduct(): void {
     let name: string;
-    this.msn.showMessage(ConsoleText.ingresaNombre);
+    this.msn.showMessage(ConsoleText.ENTER_NAME);
     name = scanf("%s");
     
     this.menuSVC.selectionProduct(name);
@@ -40,21 +40,21 @@ export class ViewsApplication implements IViewsApplication {
 
   viewGetMoney(): void {
     let name: string;
-    this.msn.showMessage(ConsoleText.ingresaNombre);
+    this.msn.showMessage(ConsoleText.ENTER_NAME);
     name = scanf("%s");
     
     let flag = this.menuSVC.selectionProduct(name);
 
     if (flag == "si") {
       let amount: number;
-      this.msn.showMessage(ConsoleText.ingresaCantidad);
+      this.msn.showMessage(ConsoleText.ENTER_AMOUNT);
       amount = scanf("%d");
 
       let flag2 = this.menuSVC.amountProduct(amount);
 
       if (flag2 == "si") {
         let money: number;
-        this.msn.showMessage(ConsoleText.ingresaDinero);
+        this.msn.showMessage(ConsoleText.ENTER_MONEY);
         money = scanf("%d");
 
         this.menuSVC.getMoney(money);

@@ -27,7 +27,7 @@ export class MenuMachineService implements IMenuMachineService {
       if (total < money) {
         let change = money - this.accesProduct.price;
 
-        this.msn.showMessage(MenuMachineText.venta);
+        this.msn.showMessage(MenuMachineText.SALE);
         console.log(`Product ${this.accesProduct.name} sold`);
         console.log(`Amount sold ${this.amount}`);
         console.log(`Change ${change}`);
@@ -35,7 +35,7 @@ export class MenuMachineService implements IMenuMachineService {
         flag = false;
       
       } else {
-        this.msn.showMessage(MenuMachineText.insufucienteFondo);
+        this.msn.showMessage(MenuMachineText.INSUFFICIENT_BACKGROUND);
         flag = false;
       }
     }
@@ -59,14 +59,14 @@ export class MenuMachineService implements IMenuMachineService {
           return product.name == this.selection;
         });
         this.accesProduct = this.selectProduct[0];
-        this.msn.showMessage(MenuMachineText.producto);
+        this.msn.showMessage(MenuMachineText.PRODUCT);
         console.log(this.selection);
         
         flag = false;
         return (flag2 = "si");
       
       } else {
-        this.msn.showMessage(MenuMachineText.productoNoRegistrado);
+        this.msn.showMessage(MenuMachineText.PRODUCT_NOT_REGISTRED);
         flag = false;
       }
     }
@@ -93,13 +93,13 @@ export class MenuMachineService implements IMenuMachineService {
         return (flag2 = "si");
       
       } else {
-        this.msn.showMessage(MenuMachineText.insuficienteCantidad);
+        this.msn.showMessage(MenuMachineText.INSUFFICIENTE_AMOUNT);
         flag = false;
       }
     }
   }
 
   exit(): void {
-    this.msn.showMessage(ConsoleText.salirApp);
+    this.msn.showMessage(ConsoleText.EXIT_APP);
   }
 }

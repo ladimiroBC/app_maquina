@@ -1,8 +1,8 @@
 export enum ConsoleText{
-  ingresaNombre = "Ingresa el nombre del producto",
-  ingresaDinero = "Ingresa el dinero de la compra",
-  ingresaCantidad = "Ingresa cantidad del producto a comprar",
-  salirApp = "Gracias por utilizar nuestros servicios, que vuelva pronto :)"
+  ENTER_NAME = "Enter the product name",
+  ENTER_MONEY = "Enter the purchase money",
+  ENTER_AMOUNT = "Enter the quantity of the product to buy",
+  EXIT_APP = "Thank you for using our services, come back soon :)"
 }
 
 

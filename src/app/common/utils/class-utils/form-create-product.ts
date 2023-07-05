@@ -14,11 +14,11 @@ export class FormCreateProduct implements IFormCreateProduct{
   constructor(private msn:IMessagesApp){}
   
   formularioProduct(): IProduct {
-    this.msn.showFormProducto(FormProduct.IngresarNombre);
+    this.msn.showFormProducto(FormProduct.ENTER_NAME);
     this.product.name = scanf("%s");
-    this.msn.showFormProducto(FormProduct.IngresarPrecio);
+    this.msn.showFormProducto(FormProduct.ENTER_PRICE);
     this.product.price = scanf("%d");
-    this.msn.showFormProducto(FormProduct.IngresarCantidad);
+    this.msn.showFormProducto(FormProduct.ENTER_AMOUNT);
     this.product.amount = scanf("%d");
 
     return this.product;

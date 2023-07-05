@@ -25,23 +25,23 @@ class ViewsApplication {
     }
     viewSelectProduct() {
         let name;
-        this.msn.showMessage(console_app_text_1.ConsoleText.ingresaNombre);
+        this.msn.showMessage(console_app_text_1.ConsoleText.ENTER_NAME);
         name = (0, scanf_1.default)("%s");
         this.menuSVC.selectionProduct(name);
     }
     viewGetMoney() {
         let name;
-        this.msn.showMessage(console_app_text_1.ConsoleText.ingresaNombre);
+        this.msn.showMessage(console_app_text_1.ConsoleText.ENTER_NAME);
         name = (0, scanf_1.default)("%s");
         let flag = this.menuSVC.selectionProduct(name);
         if (flag == "si") {
             let amount;
-            this.msn.showMessage(console_app_text_1.ConsoleText.ingresaCantidad);
+            this.msn.showMessage(console_app_text_1.ConsoleText.ENTER_AMOUNT);
             amount = (0, scanf_1.default)("%d");
             let flag2 = this.menuSVC.amountProduct(amount);
             if (flag2 == "si") {
                 let money;
-                this.msn.showMessage(console_app_text_1.ConsoleText.ingresaDinero);
+                this.msn.showMessage(console_app_text_1.ConsoleText.ENTER_MONEY);
                 money = (0, scanf_1.default)("%d");
                 this.menuSVC.getMoney(money);
             }
