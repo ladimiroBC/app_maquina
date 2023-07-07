@@ -21,10 +21,10 @@ export class MenuMachineService implements IMenuMachineService {
   getMoney(money: number): void {
     let flag = true;
 
-    while (flag) {
+    while(flag) {
       let total = this.accesProduct.price * this.amount;
 
-      if (total < money) {
+      if(total < money) {
         let change = money - this.accesProduct.price;
 
         this.msn.showMessage(MenuMachineText.SALE);
@@ -34,7 +34,7 @@ export class MenuMachineService implements IMenuMachineService {
 
         flag = false;
       
-      } else {
+      }else {
         this.msn.showMessage(MenuMachineText.INSUFFICIENT_BACKGROUND);
         flag = false;
       }
@@ -44,17 +44,16 @@ export class MenuMachineService implements IMenuMachineService {
   selectionProduct(nameProduct: string): void | string {
     this.products = data.products;
     this.selection = nameProduct;
-    
+    let flag = true;
+    let flag2 = "";
+
     let find = this.products.some((product) => {
       return product.name == this.selection;
     });
     
-    let flag = true;
-    let flag2 = "";
-    
-    while (flag) {
+    while(flag) {
       
-      if (find) {
+      if(find) {
         this.selectProduct = this.products.filter((product) => {
           return product.name == this.selection;
         });
@@ -65,7 +64,7 @@ export class MenuMachineService implements IMenuMachineService {
         flag = false;
         return (flag2 = "si");
       
-      } else {
+      }else {
         this.msn.showMessage(MenuMachineText.PRODUCT_NOT_REGISTRED);
         flag = false;
       }
@@ -83,16 +82,16 @@ export class MenuMachineService implements IMenuMachineService {
     let flag = true;
     let flag2 = "";
 
-    while (flag) {
+    while(flag) {
       
-      if (verifyAmount) {
+      if(verifyAmount) {
         let newAmount = this.accesProduct.amount - this.amount;
         this.accesProduct.amount = newAmount;
 
         flag = false;
         return (flag2 = "si");
       
-      } else {
+      }else {
         this.msn.showMessage(MenuMachineText.INSUFFICIENTE_AMOUNT);
         flag = false;
       }

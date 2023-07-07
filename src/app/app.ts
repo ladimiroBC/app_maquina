@@ -9,7 +9,7 @@ export class Application {
     this.views.viewMenu();
     let instruction = scanf("%d");
     
-    switch (instruction) {
+    switch(instruction) {
       case 1:
         this.views.viewCreateProduct();
         break;
