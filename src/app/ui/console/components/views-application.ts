@@ -45,14 +45,14 @@ export class ViewsApplication implements IViewsApplication {
     
     let flag = this.menuSVC.selectionProduct(name);
 
-    if (flag == "si") {
+    if (flag == "yes") {
       let amount: number;
       this.msn.showMessage(ConsoleText.ENTER_AMOUNT);
       amount = scanf("%d");
 
       let flag2 = this.menuSVC.amountProduct(amount);
 
-      if (flag2 == "si") {
+      if (flag2 == "yes") {
         let money: number;
         this.msn.showMessage(ConsoleText.ENTER_MONEY);
         money = scanf("%d");

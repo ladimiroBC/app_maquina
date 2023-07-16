@@ -5,7 +5,7 @@ export class Application {
   
   constructor(private views:IViewsApplication){}
   
-  myStartConsole(){
+  myStartConsole() {
     this.views.viewMenu();
     let instruction = scanf("%d");
     

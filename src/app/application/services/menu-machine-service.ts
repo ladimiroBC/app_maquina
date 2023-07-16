@@ -62,7 +62,7 @@ export class MenuMachineService implements IMenuMachineService {
         console.log(this.selection);
         
         flag = false;
-        return (flag2 = "si");
+        return (flag2 = "yes");
       
       }else {
         this.msn.showMessage(MenuMachineText.PRODUCT_NOT_REGISTRED);
@@ -89,7 +89,7 @@ export class MenuMachineService implements IMenuMachineService {
         this.accesProduct.amount = newAmount;
 
         flag = false;
-        return (flag2 = "si");
+        return (flag2 = "yes");
       
       }else {
         this.msn.showMessage(MenuMachineText.INSUFFICIENTE_AMOUNT);
