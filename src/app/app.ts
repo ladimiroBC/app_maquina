@@ -1,5 +1,5 @@
 import scanf from "scanf";
-import { IViewsApplication } from "./ui/console/components/views-applications-interface";
+import { IViewsApplication } from "./domain/interface/view.application.interface";
 
 export class Application {
   
