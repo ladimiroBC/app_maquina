@@ -6,8 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuMachineService = void 0;
 const products_json_1 = __importDefault(require("../../../assets/data/products.json"));
 class MenuMachineService {
-    constructor(msn) {
-        this.msn = msn;
+    constructor() {
         this.amount = 0;
         this.selection = "";
         this.products = [];

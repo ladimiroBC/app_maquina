@@ -2,14 +2,15 @@ import scanf from "scanf";
 import { IViewsApplication } from "./domain/interface/view.application.interface";
 
 export class Application {
-  
-  constructor(private views:IViewsApplication){}
-  
-  myStartConsole() {
+
+  constructor(private views: IViewsApplication) { }
+
+  myStartConsole(): boolean{
+    let flag = false;
     this.views.viewMenu();
     let instruction = scanf("%d");
-    
-    switch(instruction) {
+
+    switch (instruction) {
       case 1:
         this.views.viewCreateProduct();
         break;
@@ -23,10 +24,11 @@ export class Application {
         this.views.viewGetMoney();
         break;
       case 5:
-        this.views.viewExit();
+        flag = this.views.viewExit();
         break;
       default:
-        console.log("Sorry, option not available :(");          
+        console.log("Sorry, option not available :(");
     }
+    return flag;
   }
 }

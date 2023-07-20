@@ -7,15 +7,21 @@ exports.ViewsApplication = void 0;
 const scanf_1 = __importDefault(require("scanf"));
 const console_app_1 = require("../../../common/constants/console.app");
 const menu_machine_1 = require("../../../common/constants/menu.machine");
+const form_product_1 = require("../../../common/constants/form.product");
 class ViewsApplication {
-    constructor(menuSVC, msn, menuView, form) {
+    constructor(menuSVC, msn, menuView) {
         this.menuSVC = menuSVC;
         this.msn = msn;
         this.menuView = menuView;
-        this.form = form;
     }
     viewCreateProduct() {
-        let product = this.form.formularioProduct();
+        let product = {};
+        this.msn.showFormProducto(form_product_1.FormProduct.ENTER_NAME);
+        product.name = (0, scanf_1.default)("%s");
+        this.msn.showFormProducto(form_product_1.FormProduct.ENTER_PRICE);
+        product.price = (0, scanf_1.default)("%d");
+        this.msn.showFormProducto(form_product_1.FormProduct.ENTER_AMOUNT);
+        product.amount = (0, scanf_1.default)("%d");
         this.menuSVC.createProduct(product);
     }
     viewShowProduct() {
@@ -87,6 +93,7 @@ class ViewsApplication {
         this.menuView.printMenu();
     }
     viewExit() {
+        let flag = false;
         let instruction = "";
         console.log(this.msn.showMessage(console_app_1.ConsoleApp.DO_YOU_WANT_TO_GO_OUT));
         instruction = (0, scanf_1.default)("%s");
@@ -97,10 +104,12 @@ class ViewsApplication {
                 break;
             case "no":
                 console.log(this.msn.showMessage(console_app_1.ConsoleApp.ACTION_TO_PERFORM));
+                flag = true;
                 break;
             default:
                 console.log("Sorry, option not available :(");
         }
+        return flag;
     }
 }
 exports.ViewsApplication = ViewsApplication;

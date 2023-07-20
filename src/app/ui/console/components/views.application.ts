@@ -4,19 +4,26 @@ import { IMenuView } from "../../../domain/interface/menu.view.interface";
 import { IMessagesApp } from "../../../domain/interface/messages.application.interface";
 import { IViewsApplication } from "../../../domain/interface/view.application.interface";
 import { ConsoleApp } from "../../../common/constants/console.app";
-import { IFormCreateProduct } from "../../../domain/interface/form.create.product.interface";
 import { MenuMachine } from "../../../common/constants/menu.machine";
+import { Product } from "../../../domain/entitys/product";
+import { FormProduct } from "../../../common/constants/form.product";
 
 export class ViewsApplication implements IViewsApplication {
   constructor(
     private menuSVC: IMenuMachineService,
     private msn: IMessagesApp,
     private menuView: IMenuView,
-    private form: IFormCreateProduct
   ) { }
 
   viewCreateProduct(): void {
-    let product = this.form.formularioProduct();
+    let product: Product = {};
+    this.msn.showFormProducto(FormProduct.ENTER_NAME);
+    product.name = scanf("%s");
+    this.msn.showFormProducto(FormProduct.ENTER_PRICE);
+    product.price = scanf("%d");
+    this.msn.showFormProducto(FormProduct.ENTER_AMOUNT);
+    product.amount = scanf("%d");
+
     this.menuSVC.createProduct(product);
   }
 
@@ -93,7 +100,8 @@ export class ViewsApplication implements IViewsApplication {
     this.menuView.printMenu();
   }
 
-  viewExit(): void {
+  viewExit(): boolean {
+    let flag = false;
     let instruction = "";
     console.log(this.msn.showMessage(ConsoleApp.DO_YOU_WANT_TO_GO_OUT));
     instruction = scanf("%s");
@@ -105,9 +113,11 @@ export class ViewsApplication implements IViewsApplication {
         break;
       case "no":
         console.log(this.msn.showMessage(ConsoleApp.ACTION_TO_PERFORM));
+        flag = true;
         break;
       default:
         console.log("Sorry, option not available :(");
     }
+    return flag;
   }
 }

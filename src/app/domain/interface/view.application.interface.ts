@@ -5,5 +5,5 @@ export interface IViewsApplication {
   viewAmountProduct(): void;
   viewGetMoney(): void;
   viewMenu(): void;
-  viewExit(): void;
+  viewExit(): boolean;
 }

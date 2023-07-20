@@ -10,6 +10,7 @@ class Application {
         this.views = views;
     }
     myStartConsole() {
+        let flag = false;
         this.views.viewMenu();
         let instruction = (0, scanf_1.default)("%d");
         switch (instruction) {
@@ -26,11 +27,12 @@ class Application {
                 this.views.viewGetMoney();
                 break;
             case 5:
-                this.views.viewExit();
+                flag = this.views.viewExit();
                 break;
             default:
                 console.log("Sorry, option not available :(");
         }
+        return flag;
     }
 }
 exports.Application = Application;
