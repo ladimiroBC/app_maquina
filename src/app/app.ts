@@ -1,25 +1,34 @@
-import { IMenuMachine } from "./domain/interface/menu-machine-interface";
+import scanf from "scanf";
+import { IViewsApplication } from "./domain/interface/view.application.interface";
 
 export class Application {
-  private menu: IMenuMachine;
 
-  constructor(menu: IMenuMachine) {
-    this.menu = menu;
-  }
+  constructor(private views: IViewsApplication) { }
 
-  verProductos() {
-    this.menu.verProductos();
-  }
+  myStartConsole(): boolean {
+    let flag = false;
+    this.views.viewMenu();
+    let instruction = scanf("%d");
 
-  seleccionarProducto() {
-    this.menu.seleccionarProducto();
-  }
-
-  ingresarBillete() {
-    this.menu.ingresarBillete();
-  }
-
-  salir(): string {
-    return this.menu.salir();
+    switch (instruction) {
+      case 1:
+        this.views.viewCreateProduct();
+        break;
+      case 2:
+        this.views.viewShowProduct();
+        break;
+      case 3:
+        this.views.viewSelectProduct();
+        break;
+      case 4:
+        this.views.viewGetMoney();
+        break;
+      case 5:
+        flag = this.views.viewExit();
+        break;
+      default:
+        console.log("Sorry, option not available :(");
+    }
+    return flag;
   }
 }

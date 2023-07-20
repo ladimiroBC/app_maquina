@@ -1,30 +1,20 @@
 import { Application } from "./app/app";
-import { MenuMachineService } from "./app/application/services/menu-machine-service";
-import { MenuMachine } from "./app/domain/classes/menu-machine";
-import { ConsoleApplication } from "./app/ui/console/console-application";
-import { MessagesApp } from "./app/ui/console/messages-application";
+import { MenuMachineService } from "./app/application/services/menu.machine.service";
+import { MenuView } from "./app/common/utils/menu.view.application";
+import { MessagesApp } from "./app/common/utils/messages.application";
+import { ViewsApplication } from "./app/ui/console/components/views.application";
 
-const app: Application = new Application(
-  new MenuMachineService(
-    new MenuMachine(
-      new ConsoleApplication(new MessagesApp()),
-      new MessagesApp()
-    )
-  )
-);
+const app: Application = new Application(new ViewsApplication(
+  new MenuMachineService, new MessagesApp, new MenuView));
 
-let flag = "si";
-console.log("***BIENVENIDO A NUESTRA MAQUINA EXPENDEDORA***");
-while (flag === "si") {
-  app.verProductos();
+let flag = true;
+let appFlag = app.myStartConsole();
 
-  app.seleccionarProducto();
+while (flag) {
 
-  app.ingresarBillete();
-
-  let instruccion = app.salir();
-
-  flag = instruccion;
+  if (appFlag == false) {
+    flag = false;
+  } else {
+    app.myStartConsole();
+  }
 }
-
-console.log("Gracias por utilizar nuestra maquina, vuelva pronto");
