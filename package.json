@@ -5,19 +5,30 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve-json": "json-server --watch -p 5555 src/assets/data/products.json"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "scanf": "^1.1.2"
-  },
   "devDependencies": {
     "@types/node": "^20.4.2",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "image-minimizer-webpack-plugin": "^3.8.3",
+    "imagemin": "^8.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
     "ts-loader": "^9.4.4",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6",
+    "url-loader": "^4.1.1",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "json-server": "^0.17.3",
+    "module-name": "^0.0.1-security"
   }
 }

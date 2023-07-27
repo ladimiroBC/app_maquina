@@ -1,24 +1,34 @@
 {
-  "products":[
+  "products": [
     {
-      "name":"sprite",
-      "price":350,
-      "amount":3
+      "id": 1,
+      "name": "sprite",
+      "price": 350,
+      "amount": 3
     },
     {
-      "name":"pepsi",
-      "price":400,
-      "amount":2
+      "id": 2,
+      "name": "pepsi",
+      "price": 400,
+      "amount": 2
     },
     {
-      "name":"doritos",
-      "price":500,
-      "amount":5
+      "id": 3,
+      "name": "doritos",
+      "price": 500,
+      "amount": 5
     },
     {
-      "name":"coca cola",
-      "price":550,
-      "amount":6
+      "id": 4,
+      "name": "coca cola",
+      "price": 550,
+      "amount": 6
+    },
+    {
+      "name": "margaritas",
+      "price": 250,
+      "amount": 5,
+      "id": 5
     }
   ]
 }
