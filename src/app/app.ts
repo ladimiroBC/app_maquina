@@ -4,7 +4,7 @@ export class Application {
 
   constructor(private views: IViewsApplication) { }
 
-  myStartConsole():void {
-    
-  }  
+  myStartConsole(): void {
+
+  }
 }
