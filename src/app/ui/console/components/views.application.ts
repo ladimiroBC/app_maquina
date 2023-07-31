@@ -4,7 +4,6 @@ import { IMenuView } from "../../../domain/interface/menu.view.interface";
 import { IMessagesApp } from "../../../domain/interface/messages.application.interface";
 import { IViewsApplication } from "../../../domain/interface/view.application.interface";
 import { ConsoleApp } from "../../../common/constants/console.app";
-import { MenuMachine } from "../../../common/constants/menu.machine";
 import { Product } from "../../../domain/entitys/product";
 import { FormProduct } from "../../../common/constants/form.product";
 
@@ -42,35 +41,14 @@ export class ViewsApplication implements IViewsApplication {
     console.log(this.msn.showMessage(ConsoleApp.ENTER_NAME));
     nameProduct = scanf("%s");
     let product = this.menuSVC.selectionProduct(nameProduct);
-
-    try {
-      if (product.length == 0) {
-        let message = this.msn.showMessage(MenuMachine.PRODUCT_NOT_REGISTRED);
-        throw new Error(message);
-      } else {
-        console.log(`Product select--> ${product[0].name}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(`Product select--> ${product}`)
   }
 
   viewAmountProduct(): void {
     let productAmount: number;
     console.log(this.msn.showMessage(ConsoleApp.ENTER_AMOUNT));
     productAmount = scanf("%f");
-    let flag = this.menuSVC.amountProduct(productAmount);
-
-    try {
-      if (flag) {
-        console.log(`Requested amount--> ${productAmount}`);
-      } else {
-        let message = this.msn.showMessage(MenuMachine.INSUFFICIENTE_AMOUNT);
-        throw new Error(message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    this.menuSVC.amountProduct(productAmount);
   }
 
   viewGetMoney(): void {
@@ -81,19 +59,9 @@ export class ViewsApplication implements IViewsApplication {
     money = scanf("%f");
     let purchased = this.menuSVC.getMoney(money);
 
-    try {
-      if (purchased.length == 0) {
-        let message = this.msn.showMessage(MenuMachine.INSUFFICIENT_BACKGROUND);
-        throw new Error(message);
-      } else {
-        console.log(this.msn.showMessage(MenuMachine.SALE));
-        console.log(`Product purchased--> ${purchased[0].productName}`);
-        console.log(`Amount product--> ${purchased[0].productAmount}`);
-        console.log(`Change--> ${purchased[0].change}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(`Product purchased--> ${purchased[0].productName}`);
+    console.log(`Amount product--> ${purchased[0].productAmount}`);
+    console.log(`Change--> ${purchased[0].change}`);
   }
 
   viewMenu(): void {

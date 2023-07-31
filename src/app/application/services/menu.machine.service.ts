@@ -2,6 +2,7 @@ import { Product } from "../../domain/entitys/product";
 import data from "../../../assets/data/products.json";
 import { IMenuMachineService } from "./menu.machine.interface.service";
 import { PurchasedProduct } from "../../domain/entitys/purchased.product";
+import { IErrorHandling } from "../../domain/interface/error.handling.interface";
 
 export class MenuMachineService implements IMenuMachineService {
   private amount: number = 0;
@@ -10,6 +11,8 @@ export class MenuMachineService implements IMenuMachineService {
   private selectProduct: Product[] = [];
   private accesProduct: Product;
   private purchasedProduct: PurchasedProduct[] = [];
+
+  constructor(private errorHandling: IErrorHandling) { }
 
   createProduct(product: Product): void {
     this.products.push(product);
@@ -28,19 +31,39 @@ export class MenuMachineService implements IMenuMachineService {
       }
       this.purchasedProduct.push(purchased);
     }
+
+    try {
+      if (this.purchasedProduct.length == 0) {
+        this.errorHandling.productMoney();
+      } else {
+        this.purchasedProduct;
+      }
+    } catch (error) {
+      console.log(error);
+    }
     return this.purchasedProduct;
   }
 
-  selectionProduct(nameProduct: string): Product[] {
+  selectionProduct(nameProduct: string): string {
     this.products = data.products;
     this.selection = nameProduct;
     this.selectProduct = this.products.filter((product) => {
       return product.name === this.selection;
     })
-    return this.selectProduct;
+    
+    try {
+      if (this.selectProduct.length == 0) {
+        this.errorHandling.productSelection();
+      } else {
+        this.selectProduct;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return this.selectProduct[0].name!;
   }
 
-  amountProduct(productAmount: number): boolean {
+  amountProduct(productAmount: number): number {
     let flag = false;
     this.amount = productAmount;
     this.accesProduct = this.selectProduct[0];
@@ -52,7 +75,16 @@ export class MenuMachineService implements IMenuMachineService {
       flag = true;
     }
 
-    return flag;
+    try {
+      if (flag) {
+        this.amount;
+      } else {
+        this.errorHandling.productAmount();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return this.amount;
   }
 
   showProducts(): Product[] {
