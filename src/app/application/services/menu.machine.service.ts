@@ -50,7 +50,7 @@ export class MenuMachineService implements IMenuMachineService {
     this.selectProduct = this.products.filter((product) => {
       return product.name === this.selection;
     })
-    
+
     try {
       if (this.selectProduct.length == 0) {
         this.errorHandling.productSelection();
