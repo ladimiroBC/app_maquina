@@ -2,17 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app/app");
 const menu_machine_service_1 = require("./app/application/services/menu.machine.service");
+const error_handling_application_1 = require("./app/common/utils/error.handling.application");
 const menu_view_application_1 = require("./app/common/utils/menu.view.application");
 const messages_application_1 = require("./app/common/utils/messages.application");
 const views_application_1 = require("./app/ui/console/components/views.application");
-const app = new app_1.Application(new views_application_1.ViewsApplication(new menu_machine_service_1.MenuMachineService, new messages_application_1.MessagesApp, new menu_view_application_1.MenuView));
-let flag = true;
-let appFlag = app.myStartConsole();
-while (flag) {
-    if (appFlag == false) {
-        flag = false;
-    }
-    else {
-        app.myStartConsole();
-    }
-}
+const app = new app_1.Application(new views_application_1.ViewsApplication(new menu_machine_service_1.MenuMachineService(new error_handling_application_1.ErrorHandlingApp(new messages_application_1.MessagesApp)), new messages_application_1.MessagesApp, new menu_view_application_1.MenuView));
+app.myStartConsole();

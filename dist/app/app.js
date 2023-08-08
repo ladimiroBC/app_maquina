@@ -10,29 +10,30 @@ class Application {
         this.views = views;
     }
     myStartConsole() {
-        let flag = false;
-        this.views.viewMenu();
-        let instruction = (0, scanf_1.default)("%d");
-        switch (instruction) {
-            case 1:
-                this.views.viewCreateProduct();
-                break;
-            case 2:
-                this.views.viewShowProduct();
-                break;
-            case 3:
-                this.views.viewSelectProduct();
-                break;
-            case 4:
-                this.views.viewGetMoney();
-                break;
-            case 5:
-                flag = this.views.viewExit();
-                break;
-            default:
-                console.log("Sorry, option not available :(");
+        let flag = true;
+        while (flag == true) {
+            this.views.viewMenu();
+            let instruction = (0, scanf_1.default)("%d");
+            switch (instruction) {
+                case 1:
+                    this.views.viewCreateProduct();
+                    break;
+                case 2:
+                    this.views.viewShowProduct();
+                    break;
+                case 3:
+                    this.views.viewSelectProduct();
+                    break;
+                case 4:
+                    this.views.viewGetMoney();
+                    break;
+                case 5:
+                    flag = this.views.viewExit();
+                    break;
+                default:
+                    console.log("Sorry, option not available :(");
+            }
         }
-        return flag;
     }
 }
 exports.Application = Application;

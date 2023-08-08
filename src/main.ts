@@ -8,14 +8,6 @@ import { ViewsApplication } from "./app/ui/console/components/views.application"
 const app: Application = new Application(new ViewsApplication(
   new MenuMachineService(new ErrorHandlingApp(new MessagesApp)), new MessagesApp, new MenuView));
 
-let flag = true;
-let appFlag = app.myStartConsole();
+app.myStartConsole();
 
-while (flag) {
 
-  if (appFlag == false) {
-    flag = false;
-  } else {
-    app.myStartConsole();
-  }
-}

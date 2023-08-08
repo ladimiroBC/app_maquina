@@ -40,15 +40,25 @@ export class ViewsApplication implements IViewsApplication {
     let nameProduct: string;
     console.log(this.msn.showMessage(ConsoleApp.ENTER_NAME));
     nameProduct = scanf("%s");
-    let product = this.menuSVC.selectionProduct(nameProduct);
-    console.log(`Product select--> ${product}`)
+
+    try {
+      let product = this.menuSVC.selectionProduct(nameProduct);
+      console.log(`Product select--> ${product}`);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   viewAmountProduct(): void {
     let productAmount: number;
     console.log(this.msn.showMessage(ConsoleApp.ENTER_AMOUNT));
     productAmount = scanf("%f");
-    this.menuSVC.amountProduct(productAmount);
+
+    try {
+      this.menuSVC.amountProduct(productAmount);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   viewGetMoney(): void {
@@ -57,11 +67,16 @@ export class ViewsApplication implements IViewsApplication {
     let money: number;
     console.log(this.msn.showMessage(ConsoleApp.ENTER_MONEY));
     money = scanf("%f");
-    let purchased = this.menuSVC.getMoney(money);
 
-    console.log(`Product purchased--> ${purchased[0].productName}`);
-    console.log(`Amount product--> ${purchased[0].productAmount}`);
-    console.log(`Change--> ${purchased[0].change}`);
+    try {
+      let purchased = this.menuSVC.getMoney(money);
+
+      console.log(`Product purchased--> ${purchased[0].productName}`);
+      console.log(`Amount product--> ${purchased[0].productAmount}`);
+      console.log(`Change--> ${purchased[0].change}`);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   viewMenu(): void {
@@ -80,7 +95,6 @@ export class ViewsApplication implements IViewsApplication {
         console.log(this.msn.showMessage(ConsoleApp.MESSAGE_EXIT));
         break;
       case "no":
-        console.log(this.msn.showMessage(ConsoleApp.ACTION_TO_PERFORM));
         flag = true;
         break;
       default:

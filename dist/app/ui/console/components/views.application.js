@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ViewsApplication = void 0;
 const scanf_1 = __importDefault(require("scanf"));
 const console_app_1 = require("../../../common/constants/console.app");
-const menu_machine_1 = require("../../../common/constants/menu.machine");
 const form_product_1 = require("../../../common/constants/form.product");
 class ViewsApplication {
     constructor(menuSVC, msn, menuView) {
@@ -34,15 +33,9 @@ class ViewsApplication {
         let nameProduct;
         console.log(this.msn.showMessage(console_app_1.ConsoleApp.ENTER_NAME));
         nameProduct = (0, scanf_1.default)("%s");
-        let product = this.menuSVC.selectionProduct(nameProduct);
         try {
-            if (product.length == 0) {
-                let message = this.msn.showMessage(menu_machine_1.MenuMachine.PRODUCT_NOT_REGISTRED);
-                throw new Error(message);
-            }
-            else {
-                console.log(`Product select--> ${product[0].name}`);
-            }
+            let product = this.menuSVC.selectionProduct(nameProduct);
+            console.log(`Product select--> ${product}`);
         }
         catch (error) {
             console.log(error);
@@ -52,15 +45,8 @@ class ViewsApplication {
         let productAmount;
         console.log(this.msn.showMessage(console_app_1.ConsoleApp.ENTER_AMOUNT));
         productAmount = (0, scanf_1.default)("%f");
-        let flag = this.menuSVC.amountProduct(productAmount);
         try {
-            if (flag) {
-                console.log(`Requested amount--> ${productAmount}`);
-            }
-            else {
-                let message = this.msn.showMessage(menu_machine_1.MenuMachine.INSUFFICIENTE_AMOUNT);
-                throw new Error(message);
-            }
+            this.menuSVC.amountProduct(productAmount);
         }
         catch (error) {
             console.log(error);
@@ -72,18 +58,11 @@ class ViewsApplication {
         let money;
         console.log(this.msn.showMessage(console_app_1.ConsoleApp.ENTER_MONEY));
         money = (0, scanf_1.default)("%f");
-        let purchased = this.menuSVC.getMoney(money);
         try {
-            if (purchased.length == 0) {
-                let message = this.msn.showMessage(menu_machine_1.MenuMachine.INSUFFICIENT_BACKGROUND);
-                throw new Error(message);
-            }
-            else {
-                console.log(this.msn.showMessage(menu_machine_1.MenuMachine.SALE));
-                console.log(`Product purchased--> ${purchased[0].productName}`);
-                console.log(`Amount product--> ${purchased[0].productAmount}`);
-                console.log(`Change--> ${purchased[0].change}`);
-            }
+            let purchased = this.menuSVC.getMoney(money);
+            console.log(`Product purchased--> ${purchased[0].productName}`);
+            console.log(`Amount product--> ${purchased[0].productAmount}`);
+            console.log(`Change--> ${purchased[0].change}`);
         }
         catch (error) {
             console.log(error);
@@ -103,7 +82,6 @@ class ViewsApplication {
                 console.log(this.msn.showMessage(console_app_1.ConsoleApp.MESSAGE_EXIT));
                 break;
             case "no":
-                console.log(this.msn.showMessage(console_app_1.ConsoleApp.ACTION_TO_PERFORM));
                 flag = true;
                 break;
             default:

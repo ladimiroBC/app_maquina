@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuMachineService = void 0;
 const products_json_1 = __importDefault(require("../../../assets/data/products.json"));
 class MenuMachineService {
-    constructor() {
+    constructor(errorHandling) {
+        this.errorHandling = errorHandling;
         this.amount = 0;
         this.selection = "";
         this.products = [];
@@ -28,6 +29,9 @@ class MenuMachineService {
             };
             this.purchasedProduct.push(purchased);
         }
+        if (this.purchasedProduct.length == 0) {
+            this.errorHandling.productMoney();
+        }
         return this.purchasedProduct;
     }
     selectionProduct(nameProduct) {
@@ -36,7 +40,10 @@ class MenuMachineService {
         this.selectProduct = this.products.filter((product) => {
             return product.name === this.selection;
         });
-        return this.selectProduct;
+        if (this.selectProduct.length == 0) {
+            this.errorHandling.productSelection();
+        }
+        return this.selectProduct[0].name;
     }
     amountProduct(productAmount) {
         let flag = false;
@@ -48,7 +55,10 @@ class MenuMachineService {
             this.accesProduct.amount = newAmount;
             flag = true;
         }
-        return flag;
+        if (flag == false) {
+            this.errorHandling.productAmount();
+        }
+        return this.amount;
     }
     showProducts() {
         this.products = products_json_1.default.products;

@@ -32,15 +32,10 @@ export class MenuMachineService implements IMenuMachineService {
       this.purchasedProduct.push(purchased);
     }
 
-    try {
-      if (this.purchasedProduct.length == 0) {
-        this.errorHandling.productMoney();
-      } else {
-        this.purchasedProduct;
-      }
-    } catch (error) {
-      console.log(error);
+    if (this.purchasedProduct.length == 0) {
+      this.errorHandling.productMoney();
     }
+
     return this.purchasedProduct;
   }
 
@@ -51,15 +46,10 @@ export class MenuMachineService implements IMenuMachineService {
       return product.name === this.selection;
     })
 
-    try {
-      if (this.selectProduct.length == 0) {
-        this.errorHandling.productSelection();
-      } else {
-        this.selectProduct;
-      }
-    } catch (error) {
-      console.log(error);
+    if (this.selectProduct.length == 0) {
+      this.errorHandling.productSelection();
     }
+
     return this.selectProduct[0].name!;
   }
 
@@ -75,15 +65,10 @@ export class MenuMachineService implements IMenuMachineService {
       flag = true;
     }
 
-    try {
-      if (flag) {
-        this.amount;
-      } else {
-        this.errorHandling.productAmount();
-      }
-    } catch (error) {
-      console.log(error);
+    if (flag == false) {
+      this.errorHandling.productAmount();
     }
+
     return this.amount;
   }
 
