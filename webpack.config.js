@@ -6,13 +6,14 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  devtool: "source-map",
+  devtool: "inline-source-map",
   entry: {
-    bundle: path.resolve(__dirname, './src/app.index.tsx'),
+    bundle: path.resolve(__dirname, './src/app.index.ts'),
   },
   output: {
-    filename: '[name][contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: "",
     clean: true,
   },
   module: {
@@ -55,20 +56,12 @@ module.exports = {
     minimize: true,
   },
   resolve: {
-    extensions: ['.ts', '.js', 'tsx']
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin(
       {
-        title:"Application Webpack",
-        filename:"index.html",
         template:"./src/app.index.html",
-      }
-    ),
-    new HtmlWebpackPlugin(
-      {
-        filename: 'form.create.product.html',
-        template: './src/app/ui/web/views/form.create.product.html'
       }
     ),
     new MiniCssExtractPlugin(
@@ -79,12 +72,16 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist")
+      directory: path.resolve(__dirname, "./")
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
     },
     port: 3000,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true
-  }
+  },
+  target: "web"
 }

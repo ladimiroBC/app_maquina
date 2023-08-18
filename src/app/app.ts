@@ -1,10 +1,10 @@
-import { IViewsApplication } from "./domain/interface/view.application.interface";
+import { IApplicationMachine } from "./domain/interface/application.machine.interface";
 
 export class Application {
 
-  constructor(private views: IViewsApplication) { }
+  constructor(private app: IApplicationMachine) { }
 
-  myStartConsole(): void {
-
+  startApplicationWeb(): void {
+    this.app.appMachine();
   }
 }
