@@ -7,5 +7,6 @@ export class ApplicationMachine implements IApplicationMachine{
 
   async appMachine(): Promise<void> {
     await this.components.appView('root', 'application.machine');
+    await this.components.appContainer('container-app', 'container.app');
   }
 }

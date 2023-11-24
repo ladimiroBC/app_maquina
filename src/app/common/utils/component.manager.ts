@@ -8,4 +8,11 @@ export class ComponentManager implements IComponentManager {
     let htmlResponse = await response.text();
     root.innerHTML = htmlResponse; 
   }
+
+  async appContainer(selector: string, template: string): Promise<void> {
+    let root: HTMLElement = document.getElementById(selector)!;
+    let response = await fetch(`/src/app/ui/web/views/components/${template}.html`);
+    let htmlResponse = await response.text();
+    root.innerHTML = htmlResponse; 
+  }
 }
